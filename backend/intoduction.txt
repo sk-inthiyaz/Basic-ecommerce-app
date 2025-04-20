@@ -1,0 +1,509 @@
+This is e-commerse project....[1]
+Major topics of project*
+->Project setup
+->Make Login,Register User feature
+->Product listing
+->Add new Product
+->Search Product
+->Update Product
+->Hard delete and soft delete Product
+->Sorting,Filter,Pagination
+->Categories
+->Security token with Login and Register
+->Routing 
+->Much more
+
+Backend (Node js) setup[2]
+*Download Node js
+*make package.json Filter
+*Install Express js and MongoDB package
+*Make index file and run it 
+
+d1)
+What is difference between node -v    and    npm -v
+
+steps
+1.npm init (intialize npm pacakge)
+  pacakge name:(e-dashboard) [enter]
+  version(1.0.0)[enter]
+  description[enter]
+  entry point: (index.js)[enter]
+  test command:[enter]
+git repository:[enter]
+keywords:[enter]
+author:[enter]
+license: (ISC)[enter]
+About to write to C:\Users\sinti\OneDrive\Pictures\Documents\Desktop\Development\Node\e-dashboard\package.json:
+{
+  "name": "e-dashboard",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
+Is this OK? (yes) [yes] 
+2.npm i express 
+3.npm i mongoose
+4.npm i nodemon 
+
+Fronted(React js)setup[3]
+*Install react app
+*Run app
+*Make a small change
+->in E-dashboard terminal 
+   |-->npm init react-app front-end
+->In front-end
+   |-->npm i react-router-dom
+
+Routing in React js[4]
+*Install Router 
+*Make Header file
+*Make Links
+*Make Routes
+
+^craeted a nav.js connected to App.js
+^in Nav.js created nav bar like {Products,Add Product,Update Product,Logout,Profile} ul->li->Link  ..Link which is imported from 'react-router-dom'
+^in App.js ..imported Nav.js ,import { BrowserRouter,Route,Routes } from 'react-router-dom'; 
+  |->return BrowserRouter(since we are importing more routes with links) and 1 nav (which we craeted just now),after define each  routes with path="\" and element
+
+
+
+Header and Footer [5]
+*Add Style in Header
+*Make Footer component
+*Add style with Footer*Update Project Structure
+--understood well 
+
+Sign-up page Layout[6]
+*Make component for Sign-up
+*Make input fields
+*Get Form Data 
+
+DataBase Setup(MongoDB)[7][8]
+*Download MongoDB setup 
+*Install MongoDB
+Setup and test
+all done in tutorials 
+
+npm i mongoose
+fetched a simple db in our vs code 
+
+
+SignUp API[9]
+*Make DB and collection
+*Make config file
+*Make Route for API
+*Test API with Postman
+
+with the help of postman 
+POST = used to send the data for processing 
+user typed the data ..like we have created a json and sended to mongodb database 
+If you've successfully POSTed data,
+ it means you've added something new to your database or application.
+
+Fix core issue in Node [10]
+when we work with backend we face fronted issues
+when we hit postman all be okay but when it comes to fronted the problems arrises
+request is blocked .....
+we get core error ..then the problem is backend side 
+backend -->npm i cors
+const cors = require('cors')
+app.use(cors())
+
+
+Integrate SignUp API in react [11]
+*Recap last part
+*Integrate API
+*Redirect Page 
+*Test Flow
+
+when we log in in web ...the log in button should not be shown again
+and we leave the website and come again ..it should in log in ..i.e users should be in usermode 
+that we are clarifying in this video
+//we can use axios in api calling
+
+
+easy imthiyaz
+all the data {name,password,email}is kept in collection data when users submit it acts and send the information to uset
+//in signup page 
+collectData = async = ()=>{
+  let result = fetch('backend  url',{
+    define method:post,body,headers
+    
+  })
+}
+
+Complete SignUp Flow[12]
+*Keep user data in localStorage
+*Make Private component
+*Handle SignUp Page with localStorage
+*Upadte navbar for with
+*Logout and SignUp Menu
+
+changes made in app.js 
+craeted a privatecomponent in components 
+if the user log in the he can se ee indiviual functionality [products,about...] else he willl be in log in page 
+so we used private comonet ..it is imported to SignUp.js 
+
+
+Logout[13]
+*Make a function for log out
+*Clear Local Storage 
+*Redirect user to SignUp 
+*Bug fix of last part
+//SignUp
+
+made changes
+
+Login API in Node js[14]
+
+*Make Route for API
+*Pass data from postman
+*Fetch Result from DB
+*Remove Password from Register and Log api
+*Test Flow
+
+Login Component in React js[15] **
+*Make Login Component 
+*make Login Route 
+*Make Input fields 
+*Get input data State
+*Test Flow
+
+created a log in page done all components perfectly
+
+Login API integration[16]
+*Test API with postman 
+*Call API on Login button click
+*Set local storage 
+*Redirect Page 
+*Update navbar
+*Test Flow
+
+Update navbar[17]
+*Hide Products Menu befire Login
+*Show Logged in username
+*Add logo and style
+*Test Flow
+*unsta -.Code.steps
+
+  
+Add Product API[18]
+
+*Make Collection for product 
+*define model for product collection
+*Makeroute for add product 
+*Send data from Postman
+*Insta --> code .steps
+
+for products i made  a separaed database colletion name called product 
+which contains schema i entered what information product has 
+tested with post man ..after succesful it is added to mongodb database
+
+Add Product Component [19]
+
+*Make New Component
+*Define input fields 
+*Add Style to fields 
+*get data from input fields 
+*Insta -->Code.steps
+
+Add Product API[20]
+*MAke Collection for product
+*Define model for prodcut collection
+*Make Route for add Prodcut 
+*Send  data from Postman
+*Insta ->code.steps
+ 
+ Call API for Add Product
+ *Get Use id from local storage 
+ *Call API to add product
+ *Get the result and test Flow
+ *Insta ->Code.steps 
+
+
+Simple form Validation [21]
+*Check empty State
+*Show error message
+*Add style
+*Test flow with every input field
+
+
+Product List API[22]
+*make Router for Product List API
+*Fetch Data from Data base 
+*Test API with Postman
+app.get("/products", async(req,resp)=>{
+    let products = await Product.find();//all the products will be assign to products 
+    if(products.length>0){
+        resp.send(products)
+    }
+    else{
+        resp.send({result:"No Products Found"})
+    }
+})
+
+Integrate Prodcut List API[23]
+*Make function and define State
+*Call API for Product list
+*Make static list 
+*Render Prodcut list 
+
+
+Delete Product API[24]
+*Make Route for API
+*Get id with params in API url
+*Delete product from DB
+*Test API with the postman
+
+app.delete("/product/:id",async (req,resp)=>{
+    resp.send(req.params.id);
+    const result = await Product.deleteOne({_id:req.params.id})
+    resp.send(result)
+})
+
+
+Integrate Delete Product API[25]
+*Add delete column
+*Make Function for delete API call
+*call delete product API
+*test Flow
+
+Great question, Imthiyaz! Let me explain why we need to parse the data in simple terms with examples. 😊
+Why We Parse Data (JSON) in Fetch Requests
+How Data Travels
+When your frontend talks to backend, all data becomes text during transfer
+Even if it's JSON, it gets converted to a text string (called "serialization")
+What Fetch Returns
+javascript
+const response = await fetch('your-api-url');
+response contains the raw HTTP response (headers, status, etc.)
+The actual data is hidden in the response body as text
+The Parsing Step
+javascript
+const data = await response.json(); // This parses JSON text → JavaScript object
+Converts:
+'{"name":"Imthiyaz","age":25}' (string)
+→
+{name: "Imthiyaz", age: 25} (usable JavaScript object)
+Real-Life Example 🌟
+Imagine you're sending a letter (API request):
+Backend writes a letter in JSON format:
+json
+{"pizza": "pepperoni", "slices": 8}
+Postman (fetch) delivers it as plain text:
+'{"pizza":"pepperoni","slices":8}'
+Your frontend needs to read (parse) it:
+
+javascript
+const letterText = await response.text(); // Gets raw text
+const pizzaOrder = JSON.parse(letterText); // Same as .json()
+console.log(pizzaOrder.slices); // Now you can use 8
+
+Key Reasons We Parse:
+Fetch gives raw response - You get the entire package (status, headers, body)
+
+Body is always text - Even if it looks like JSON, it's just a string
+
+We need JavaScript objects - To use result.deletedCount, we need a real object
+
+Frontend → (JSON text) → Backend → (JSON text) → Frontend
+          ↗️                      ↖️
+       stringify                 parse
+
+Frontend JavaScript Object
+       ↓ JSON.stringify()
+JSON Text (API Request) → Internet → Backend
+       ↑ JSON.parse()                  ↓ JSON.stringify()
+Frontend JavaScript Object ← JSON Text (API Response)
+           ↑ JSON.parse()
+
+API Communication Pattern (The Pizza Order System �🍕)
+Imagine you're running a pizza shop with a mobile app (frontend) and kitchen (backend):
+
+1. Frontend → Backend (Order Placement)
+Your Action: Tap "Order Pepperoni Pizza" in app
+
+What Happens:
+
+javascript
+// Frontend converts to JSON text (stringify)
+const order = JSON.stringify({ pizza: "pepperoni", quantity: 2 });
+// → '{"pizza":"pepperoni","quantity":2}'
+Like writing an order on paper for the kitchen
+
+Why? Data must become text to travel through internet cables
+
+2. Backend Receives (Kitchen Gets Order)
+Backend Process:
+
+javascript
+// Backend parses JSON text (parse)
+const receivedOrder = JSON.parse('{"pizza":"pepperoni","quantity":2}');
+// → { pizza: "pepperoni", quantity: 2 }
+Like the chef reading your written order
+
+Critical Step: Converts text back to usable data
+
+3. Backend → Frontend (Order Response)
+Kitchen Prepares Pizza → Sends Status:
+
+javascript
+// Backend converts to JSON text
+JSON.stringify({ status: "cooking", time: 15 });
+// → '{"status":"cooking","time":15}'
+Like the chef writing "15 mins" on your order slip
+
+4. Frontend Displays (App Shows Status)
+Your App Processes:
+
+javascript
+// Frontend parses the response
+const status = await response.json();
+// → { status: "cooking", time: 15 }
+alert(`Your pizza will be ready in ${status.time} minutes!`);
+Like you reading the chef's note on your phone
+
+
+Update Product Component UI[26]
+
+*Add link for Update Product
+*Make Component for update Product 
+*Make input fields for updating Product
+*Collect input fields data
+
+
+API for get single Product[27]
+*Make API Route
+*fetch data fromthe database
+*Test API with postman
+
+//agar information db se browser ku lana boletho me get method
+//browser sey db's ku bhej boletho post method
+//agar delete karna boletho delete method
+//update karna boletho put method
+
+
+Prefill Update product form [28]
+*Get id from URL params 
+*Fetch Product data
+*Set data in input field
+
+API for Update Product[29]
+*Make a new Route for API
+*Write code for update DB
+*Send data from postman*Test API
+
+app.put("/product/:id",async(req,resp)=>{
+    let result = await Product.updateOne(
+        {_id:req.params.id},
+        {   
+            $set : req.body
+        }
+    )
+    resp.send(result)
+});
+
+
+Integrate API for Update Product [30]
+*Use fetch method for API integration
+*Send data with the PUT method
+*Redirect to product list page
+
+  
+const updateproduct = async ()=>{
+        console.log(name,price,category,company)
+        let response = fetch(`http://localhost:5000/product/${params.id}`,{
+            method:'PUT',
+            body:JSON.stringify({name,price,category,company}),
+            headers:{
+                'Content-Type':"application/json"
+            }
+        });
+        let result = await (await response).json();
+        console.log(result)
+        navigate("/")
+    }
+
+
+Search API for product[31]
+*Make route for API*Write code for search and fetch data from DB
+*Test API with postman
+app.get("/search/:key",async (req,resp)=>{
+    let result = await Product.find({
+        "$or":[
+            {name:{$regex:req.params.key}},
+            {company:{$regex:req.params.key}},
+            {category:{$regex:req.params.key}}
+        ]
+    })
+    resp.send(result)
+})
+
+
+Integrate Search API[32]
+*Make input box for Search 
+*Make Search Handle function
+*Call API for search product
+*Update list on search
+
+
+JWT Authentication[33]
+*Add JWT pacakge 
+*Define the key for token
+*Add token with login and Register API
+*Test token with API in Postman
+{
+    "email":"umain@gmail.com",
+    "password":"1111" 
+}
+JSON WEB TOKEN
+
+    "user": {
+        "_id": "68032e80c5906ffe1a887015",
+        "name": "umain",
+        "email": "umain@gmail.com",
+        "__v": 0
+    },
+    "auth": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjY4MDMyZTgwYzU5MDZmZmUxYTg4NzAxNSIsIm5hbWUiOiJ1bWFpbiIsImVtYWlsIjoidW1haW5AZ21haWwuY29tIiwiX192IjowfSwiaWF0IjoxNzQ1MTM2MDQwLCJleHAiOjE3NDUxNDMyNDB9.D6jzRTHmWTox-wn3ExOmyx5Eu0pQIueI49oN2fLFhAE"
+
+Verify Auth Token in Node js[35]
+*Send Token with postman
+*Make MiddleWare for verifying Token 
+*Verify Token and send responce 
+ try{
+        if(token){
+            token = token.split(' ')
+            console.log("middleware called if",token)
+        }else{
+    
+        }
+        console.log("middleware called",token)
+        next()
+    }
+    catch ({ name, message }) {
+        console.log(name); // "TypeError"
+        console.log(message); // "oops"
+      }
+
+Send Auth Token from React js[36]
+*Check API Response without token
+*Send Token in all API
+*Test All API with token
+
+
+There will be a intersepter name package it can solve authorizations  at a time in fronted
+
+Git:
+project-root/
+├── backend/
+│   ├── node_modules/
+│   └── .gitignore
+├── frontend/
+│   ├── node_modules/
+│   └── .gitignore
+└── README.md
