@@ -23,7 +23,6 @@ const Nav=()=>{
                 <li> <Link onClick={logout} to="/SignUp">Logout ({JSON.parse(auth).name}) </Link></li>
             </ul>
             :
-            
             <ul className='nav-right' >
                 <li> <Link to="/SignUp">Sign Up</Link> </li>
                 <li><Link to="/login" >Login</Link></li>
