@@ -75,7 +75,8 @@ Routing in React js[4]
 Header and Footer [5]
 *Add Style in Header
 *Make Footer component
-*Add style with Footer*Update Project Structure
+*Add style with Footer
+*Update Project Structure
 --understood well 
 
 Sign-up page Layout[6]
